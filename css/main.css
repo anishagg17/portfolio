@@ -299,4 +299,50 @@ main {
       margin-top: 1rem;
       font-size: 5rem; }
   .projects {
-    grid-template-columns: 1fr; } }
+    grid-template-columns: 1fr; } 
+    main.home{
+
+      flex-flow: column;
+      }
+    /* .terminal-window{
+      top:0;
+      position: fixed;
+      left:120vw;
+      margin:2vw 0;
+    } */
+    .main-terminal{
+      width: 100%;
+      position: relative;
+      margin:0;
+      padding:0;
+      left:50%;
+      right:50%;
+      top:2vh;
+    }
+
+    /* .terminal-window ,
+    #terminal {
+      width: 100%;
+    } */
+    }
+
+
+
+    .header {
+      position: fixed;
+      top: 0;
+      z-index: 1;
+      width: 100%;
+      background-color: #f1f1f1;
+    }
+    .progress-container {
+      width: 100%;
+      height: 3px;
+      background: #ccc;
+    }
+    
+    .progress-bar {
+      height: 3px;
+      background: #eece1a;
+      width: 0%;
+    }

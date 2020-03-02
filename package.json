@@ -4,15 +4,18 @@
   "description": "",
   "main": "index.js",
   "devDependencies": {},
+  "homepage": "https://github.com/anishagg17/my-portfolio",
   "scripts": {
     "sass": "node-sass -w scss/ -o css/ --recursive",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "lite-server"
+    "start": "lite-server",
+    "deploy": "gh-pages -d ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "gh-pages": "^1.2.0",
     "lite-server": "^2.5.4",
     "node-sass": "^4.9.2"
   }
