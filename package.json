@@ -1,10 +1,10 @@
 {
-  "name": "modern_portfolio",
+  "name": "portfolio",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "devDependencies": {},
-  "homepage": "https://github.com/anishagg17/my-portfolio",
+  "homepage": "https://github.com/anishagg17/portfolio",
   "scripts": {
     "sass": "node-sass -w scss/ -o css/ --recursive",
     "test": "echo \"Error: no test specified\" && exit 1",
