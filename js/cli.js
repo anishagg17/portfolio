@@ -9,7 +9,7 @@ const errors = {
 
 const struct = {
   root: ["about", "resume", "contact", "open-source"],
-  projects: ["nodemessage", "map", "dotify", "slack_automation"],
+  projects: ["sick-fits", "nudity_detecting_ghAction", "mern_connect", "weather_extension"],
   skills: ["proficient", "familiar", "learning"],
 };
 
