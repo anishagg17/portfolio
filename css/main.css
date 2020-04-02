@@ -148,7 +148,9 @@ header {
   color: #eece1a; }
 
   main.home{
-
+    
+    height: 100vh;
+    overflow: scroll !important;
   display: flex;
   justify-content: space-between;
   }
@@ -290,6 +292,27 @@ main {
   .projects {
     grid-template-columns: repeat(2, 1fr); } }
 
+@media screen and (max-width: 992px) {
+  main.home{
+  flex-flow: column;
+  }
+  .main-terminal{
+    display: flex;
+    justify-content: center;
+    margin:0;
+    padding: 0;
+    
+  }
+  .terminal-window{
+    width: 100vw;
+  }
+.terminal-head{
+  display: none;
+}
+  #terminal{
+    width: 100% !important;
+  }
+}
 @media screen and (max-width: 500px) {
   main {
     padding: 2rem; }
@@ -300,30 +323,8 @@ main {
       font-size: 5rem; }
   .projects {
     grid-template-columns: 1fr; } 
-    main.home{
-
-      flex-flow: column;
-      }
-    /* .terminal-window{
-      top:0;
-      position: fixed;
-      left:120vw;
-      margin:2vw 0;
-    } */
-    .main-terminal{
-      width: 100%;
-      position: relative;
-      margin:0;
-      padding:0;
-      left:50%;
-      right:50%;
-      top:2vh;
-    }
-
-    /* .terminal-window ,
-    #terminal {
-      width: 100%;
-    } */
+   
+   
     }
 
 
