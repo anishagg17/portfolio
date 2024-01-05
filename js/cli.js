@@ -1,31 +1,36 @@
 /* global $, localStorage, Shell */
 
 const errors = {
-  invalidDirectory: "Error: not a valid directory",
-  noWriteAccess: "Error: you do not have write access to this directory",
-  fileNotFound: "Error: file not found in current directory",
-  fileNotSpecified: "Error: you did not specify a file",
+  invalidDirectory: 'Error: not a valid directory',
+  noWriteAccess: 'Error: you do not have write access to this directory',
+  fileNotFound: 'Error: file not found in current directory',
+  fileNotSpecified: 'Error: you did not specify a file',
 };
 
 const struct = {
-  root: ["about", "resume", "contact", "open-source"],
-  projects: ["sick-fits", "nudity_detecting_ghAction", "mern_connect", "weather_extension"],
-  skills: ["proficient", "familiar", "learning"],
+  root: ['about', 'resume', 'contact', 'open-source'],
+  projects: [
+    'sick-fits',
+    'nudity_detecting_ghAction',
+    'mern_connect',
+    'weather_extension',
+  ],
+  skills: ['proficient', 'intermediate', 'learning'],
 };
 
 const commands = {};
 let systemData = {};
-const rootPath = "users/codebytere/root";
+const rootPath = 'users/codebytere/root';
 
 const getDirectory = () => localStorage.directory;
-const setDirectory = dir => {
+const setDirectory = (dir) => {
   localStorage.directory = dir;
 };
 
 // turn on fullscreen
 const registerFullscreenToggle = () => {
-  $(".button.green").click(() => {
-    $(".terminal-window").toggleClass("fullscreen");
+  $('.button.green').click(() => {
+    $('.terminal-window').toggleClass('fullscreen');
   });
 };
 
@@ -39,9 +44,9 @@ commands.touch = () => errors.noWriteAccess;
 commands.rm = () => errors.noWriteAccess;
 
 // view contents of specified directory
-commands.ls = directory => {
-  if (directory === ".." || directory === "~") {
-    return systemData["root"];
+commands.ls = (directory) => {
+  if (directory === '..' || directory === '~') {
+    return systemData['root'];
   }
   return systemData[getDirectory()];
 };
@@ -52,30 +57,30 @@ commands.help = () => systemData.help;
 // display current path
 commands.path = () => {
   const dir = getDirectory();
-  return dir === "root" ? rootPath : `${rootPath}/${dir}`;
+  return dir === 'root' ? rootPath : `${rootPath}/${dir}`;
 };
 
 // see command history
 commands.history = () => {
   let history = localStorage.history;
   history = history ? Object.values(JSON.parse(history)) : [];
-  return `<p>${history.join("<br>")}</p>`;
+  return `<p>${history.join('<br>')}</p>`;
 };
 
 // move into specified directory
-commands.cd = newDirectory => {
+commands.cd = (newDirectory) => {
   const currDir = getDirectory();
   const dirs = Object.keys(struct);
-  const newDir = newDirectory ? newDirectory.trim() : "";
+  const newDir = newDirectory ? newDirectory.trim() : '';
 
   if (dirs.includes(newDir) && currDir !== newDir) {
     setDirectory(newDir);
   } else if (
-    newDir === "" ||
-    newDir === "~" ||
-    (newDir === ".." && dirs.includes(currDir))
+    newDir === '' ||
+    newDir === '~' ||
+    (newDir === '..' && dirs.includes(currDir))
   ) {
-    setDirectory("root");
+    setDirectory('root');
   } else {
     return errors.invalidDirectory;
   }
@@ -83,11 +88,12 @@ commands.cd = newDirectory => {
 };
 
 // display contents of specified file
-commands.cat = filename => {
+commands.cat = (filename) => {
   if (!filename) return errors.fileNotSpecified;
 
   const dir = getDirectory();
-  const fileKey = filename.split(".")[0];
+  const fileKey = filename.split('.')[0];
+  console.log(dir, fileKey);
 
   if (fileKey in systemData && struct[dir].includes(fileKey)) {
     return systemData[fileKey];
@@ -99,11 +105,11 @@ commands.cat = filename => {
 // initialize cli
 $(() => {
   registerFullscreenToggle();
-  const cmd = document.getElementById("terminal");
+  const cmd = document.getElementById('terminal');
   const terminal = new Shell(cmd, commands);
 
   $.ajaxSetup({ cache: false });
-  $.get("data/system_data.json", data => {
+  $.get('data/system_data.json', (data) => {
     systemData = data;
   });
 });
